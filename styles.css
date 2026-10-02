@@ -80,6 +80,12 @@ h1 {
     margin: 0;
 }
 
+.author {
+    margin: 4px 0 0;
+    color: var(--text-muted);
+    font-size: 0.95em;
+}
+
 /* Light mode: black circle with a white moon. Dark mode: white circle with a black sun. */
 .theme-toggle {
     position: relative;
@@ -281,6 +287,28 @@ td {
 
 .delete-btn:hover {
     background-color: var(--danger-hover);
+}
+
+/* ===== Footer ===== */
+.appFooter {
+    width: 100%;
+    margin-top: 40px;
+    padding: 18px 16px;
+    box-sizing: border-box;
+    text-align: center;
+    background-color: var(--surface);
+    border-top: 1px solid var(--border);
+    color: var(--text-muted);
+    font-size: 14px;
+    backdrop-filter: blur(8px);
+}
+
+.appFooter p {
+    margin: 0;
+}
+
+.appFooter strong {
+    color: var(--primary);
 }
 
 /* ===== Responsive ===== */
