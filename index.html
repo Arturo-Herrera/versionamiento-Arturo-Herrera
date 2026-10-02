@@ -5,39 +5,79 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Example Data Table with IndexedDB</title>
 
+    <!-- Apply the saved theme before the page renders to avoid a flash -->
+    <script>
+        (function () {
+            let theme = null;
+            try { theme = localStorage.getItem('theme'); } catch (e) {}
+            if (!theme) {
+                theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            }
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Example Product List Web App</h1>
+    <header class="appHeader">
+        <div>
+            <h1>Product List Web App</h1>
+        </div>
+        <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">
+            <svg class="icon icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+                <path fill="currentColor" d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>
+            </svg>
+            <svg class="icon icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="12" r="4.5" fill="currentColor"/>
+                <g stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                    <line x1="12" y1="1.5" x2="12" y2="4"/>
+                    <line x1="12" y1="20" x2="12" y2="22.5"/>
+                    <line x1="1.5" y1="12" x2="4" y2="12"/>
+                    <line x1="20" y1="12" x2="22.5" y2="12"/>
+                    <line x1="4.6" y1="4.6" x2="6.3" y2="6.3"/>
+                    <line x1="17.7" y1="17.7" x2="19.4" y2="19.4"/>
+                    <line x1="4.6" y1="19.4" x2="6.3" y2="17.7"/>
+                    <line x1="17.7" y1="6.3" x2="19.4" y2="4.6"/>
+                </g>
+            </svg>
+        </button>
+    </header>
 
     <div class="container">
 
-        <div class="formContainer">
-            <label for="name">Product Name:</label>
-            <input type="text" id="name" placeholder="Enter product name">
-            
-            <label for="price">Price:</label>
-            <input type="number" id="price" placeholder="Enter product price" min="1">
-            
-            <button id="addProduct">Add Product</button>
+        <aside class="sidebar">
+            <div class="formContainer card">
+                <h2>New Product</h2>
+                <label for="name">Product Name:</label>
+                <input type="text" id="name" placeholder="Enter product name">
+
+                <label for="price">Price:</label>
+                <input type="number" id="price" placeholder="Enter product price" min="1">
+
+                <button id="addProduct">Add Product</button>
+            </div>
+        </aside>
+
+        <div class="tableWrapper card">
+            <table id="productsTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
         </div>
-
-      
-        <table id="productsTable">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Price</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-          
-            </tbody>
-        </table>
     </div>
-
 
     <script src="functions.js"></script>
 </body>

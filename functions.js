@@ -96,5 +96,14 @@ function deleteProduct(event) {
     loadProductTable();
 }
 
+//Toggle between light and dark mode and remember the choice
+function toggleTheme() {
+    const current = document.documentElement.getAttribute('data-theme');
+    const next = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch (e) {}
+}
+
 //Event listener for the button click
 document.getElementById('addProduct').addEventListener('click', addProduct);
+document.getElementById('themeToggle').addEventListener('click', toggleTheme);
