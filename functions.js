@@ -40,6 +40,9 @@ function loadProductTable() {
             tableBody.appendChild(row);
         });
 
+    //Update the summary card
+        updateSummary(products);
+
     //Add event listeners for delete buttons
         document.querySelectorAll('.delete-btn').forEach(button => {
             button.addEventListener('click', deleteProduct);
@@ -94,6 +97,13 @@ function deleteProduct(event) {
 
     //Reload the product table to reflect changes
     loadProductTable();
+}
+
+//Update the summary card with the product count and total value
+function updateSummary(products) {
+    const total = products.reduce((sum, product) => sum + product.price, 0);
+    document.getElementById('totalProducts').textContent = products.length;
+    document.getElementById('totalValue').textContent = `$${total.toFixed(2)}`;
 }
 
 //Toggle between light and dark mode and remember the choice

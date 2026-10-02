@@ -160,7 +160,8 @@ h1 {
     min-width: 240px;
 }
 
-.formContainer {
+.formContainer,
+.summaryCard {
     padding: 24px;
 }
 
@@ -212,6 +213,31 @@ button:hover {
 
 button:active {
     transform: scale(0.98);
+}
+
+/* ===== Summary card ===== */
+.stat {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.stat:last-child {
+    border-bottom: none;
+}
+
+.stat-label {
+    color: var(--text-muted);
+    font-size: 14px;
+}
+
+.stat-value {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.4em;
+    font-weight: 600;
+    color: var(--accent);
 }
 
 /* ===== Table ===== */
